@@ -1,43 +1,176 @@
-// components/ImageGallery.tsx
-import Image from 'next/image';
+"use client";
 
-interface GalleryImage {
-  src: string;
-  alt: string;
+import {ArrowLeft, ArrowRight, Star} from "lucide-react";
+import { useEffect, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import type { CarouselApi } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Image from 'next/image'
+import SectionHeading from "@/components/global/section-heading";
+
+interface GalleryItem {
+  id: string;
+  title: string;
+  summary: string;
+  url: string;
+  image: string;
 }
 
-const images: GalleryImage[] = [
-  { src: '/images/gallery-1.jpg', alt: 'Mountain view' },
-  { src: '/images/gallery-2.jpg', alt: 'Palm tree' },
-  { src: '/images/gallery-3.jpg', alt: 'Village aerial view' },
-  { src: '/images/gallery-4.jpg', alt: 'Avocado halves' },
-  { src: '/images/gallery-5.jpg', alt: 'Green avocados on tree' },
-];
+interface Gallery6Props {
+  heading?: string;
+  demoUrl?: string;
+  items?: GalleryItem[];
+}
 
-const ImageGallery = () => {
+const Gallery6 = ({
+                    items = [
+                      {
+                        id: "item-1",
+                        title: "Build Modern UIs",
+                        summary:
+                            "Create stunning user interfaces with our comprehensive design system.",
+                        url: "#",
+                        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+                      },
+                      {
+                        id: "item-2",
+                        title: "Computer Vision Technology",
+                        summary:
+                            "Powerful image recognition and processing capabilities that allow AI systems to analyze, understand, and interpret visual information from the world.",
+                        url: "#",
+                        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+                      },
+                      {
+                        id: "item-3",
+                        title: "Machine Learning Automation",
+                        summary:
+                            "Self-improving algorithms that learn from data patterns to automate complex tasks and make intelligent decisions with minimal human intervention.",
+                        url: "#",
+                        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+                      },
+                      {
+                        id: "item-4",
+                        title: "Predictive Analytics",
+                        summary:
+                            "Advanced forecasting capabilities that analyze historical data to predict future trends and outcomes, helping businesses make data-driven decisions.",
+                        url: "#",
+                        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+                      },
+                      {
+                        id: "item-5",
+                        title: "Neural Network Architecture",
+                        summary:
+                            "Sophisticated AI models inspired by human brain structure, capable of solving complex problems through deep learning and pattern recognition.",
+                        url: "#",
+                        image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+                      },
+                    ],
+                  }: Gallery6Props) => {
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+    const updateSelection = () => {
+      setCanScrollPrev(carouselApi.canScrollPrev());
+      setCanScrollNext(carouselApi.canScrollNext());
+    };
+    updateSelection();
+    carouselApi.on("select", updateSelection);
+    return () => {
+      carouselApi.off("select", updateSelection);
+    };
+  }, [carouselApi]);
   return (
-      <section id="gallery" className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">Galeri Kami</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {images.map((image, index) => (
-                <div key={index} className="relative aspect-video rounded-lg overflow-hidden shadow-lg group">
-                  <Image
-                      src={image.src}
-                      alt={image.alt}
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-white text-lg font-semibold">{image.alt}</p>
-                  </div>
-                </div>
-            ))}
+      <section className="py-32">
+        <div className="container mx-auto">
+          <div className="mb-8 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
+            <SectionHeading Icon={Star} title={'Galeri Kami'} />
+            <div className="mt-8 flex shrink-0 items-center justify-start gap-2">
+              <Button
+                  size="icon"
+                  variant="outline"
+                  onClick={() => {
+                    carouselApi?.scrollPrev();
+                  }}
+                  disabled={!canScrollPrev}
+                  className="disabled:pointer-events-auto"
+              >
+                <ArrowLeft className="size-5" />
+              </Button>
+              <Button
+                  size="icon"
+                  variant="outline"
+                  onClick={() => {
+                    carouselApi?.scrollNext();
+                  }}
+                  disabled={!canScrollNext}
+                  className="disabled:pointer-events-auto"
+              >
+                <ArrowRight className="size-5" />
+              </Button>
+            </div>
           </div>
+        </div>
+        <div className="w-full max-w-full">
+          <Carousel
+              setApi={setCarouselApi}
+              opts={{
+                breakpoints: {
+                  "(max-width: 768px)": {
+                    dragFree: true,
+                  },
+                },
+              }}
+              className="relative w-full max-w-full md:left-[-1rem]"
+          >
+            <CarouselContent className="hide-scrollbar w-full max-w-full md:-mr-4 md:ml-8 ">
+              {items.map((item) => (
+                  <CarouselItem key={item.id} className="ml-8 md:max-w-[452px]">
+                    <a
+                        href={item.url}
+                        className="group flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="aspect-3/2 flex overflow-clip rounded-xl">
+                          <div className="flex-1">
+                            <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
+                              <Image
+                                  src={item.image}
+                                  alt={item.title}
+                                  width={436}
+                                  height={296}
+                                  className="h-full w-full object-cover object-center"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
+                        {item.title}
+                      </div>
+                      <div className="text-muted-foreground mb-8 line-clamp-2 text-sm md:mb-12 md:text-base lg:mb-9">
+                        {item.summary}
+                      </div>
+                      <div className="flex items-center text-sm">
+                        Read more{" "}
+                        <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
+                      </div>
+                    </a>
+                  </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </section>
   );
 };
 
-export default ImageGallery;
+export default Gallery6 ;

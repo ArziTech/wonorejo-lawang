@@ -1,6 +1,8 @@
 // components/AboutSection.tsx
 import Image from 'next/image';
 import FeatureCard from './feature-card';
+import SectionHeading from "@/components/global/section-heading";
+import {Star} from "lucide-react";
 
 const AboutSection = () => {
   return (
@@ -27,7 +29,7 @@ const AboutSection = () => {
 
         {/* Detailed About Content / Features Section */}
         <div id="features" className="container mx-auto px-4 mt-16">
-          <h3 className="text-3xl font-bold text-center text-gray-800 mb-10">Mengapa Memilih Kami?</h3>
+          <SectionHeading Icon={Star} title={'Mengapa Memilih Kami?'} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             <FeatureCard
                 icon="🌿"
@@ -51,18 +53,6 @@ const AboutSection = () => {
             />
           </div>
 
-          {/* Small image section below features */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="aspect-video rounded-lg overflow-hidden shadow-md">
-              <Image src="/images/small-img-1.jpg" alt="Small image 1" width={400} height={250} objectFit="cover" className="w-full h-full"/>
-            </div>
-            <div className="aspect-video rounded-lg overflow-hidden shadow-md">
-              <Image src="/images/small-img-2.jpg" alt="Small image 2" width={400} height={250} objectFit="cover" className="w-full h-full"/>
-            </div>
-            <div className="aspect-video rounded-lg overflow-hidden shadow-md">
-              <Image src="/images/small-img-3.jpg" alt="Small image 3" width={400} height={250} objectFit="cover" className="w-full h-full"/>
-            </div>
-          </div>
         </div>
       </section>
   );
