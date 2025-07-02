@@ -1,14 +1,27 @@
 // components/AboutSection.tsx
 import Image from 'next/image';
-import FeatureCard from './feature-card';
+import Map from '../../../public/images/wonorejo-map.png'
 import SectionHeading from "@/components/global/section-heading";
 import {Star} from "lucide-react";
 
 const AboutSection = () => {
   return (
-      <section id="about" className="py-16 bg-white">
+      <section id="about" className="my-16 bg-white">
+        {/* Detailed About Content / Features Section */}
+        <div  className="container mx-auto ">
+          <div className="w-full flex justify-between">
+            <div className={'w-full'}>
+              <SectionHeading Icon={Star} title={'Lebih Dekat dengan Desa Wonorejo'} />
+              <p className={'max-w-prose text-justify text-lg '}>
+                Desa Wonorejo merupakan desa paling utara pada bagian wilayah Kabupaten Malang. Desa Wonorejo juga merupakan pintu masuk Kabupaten dari arah Surabaya yang berbatasan dengan Kabupaten Pasuruan.
+              </p>
+            </div>
+            <Image src={Map} alt={'Peta desa wonorejo'} className={'w-1/2 rounded-xl'}/>
+          </div>
+        </div>
+
         {/* Top About Section (similar to the second hero) */}
-        <div className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white text-center">
+        <div className="relative mt-16 h-[400px] md:h-[500px] flex items-center justify-center text-white text-center">
           <Image
               src="/images/about-bg.png" // A different large background image
               alt="Scenic view of Wonorejo Lawang"
@@ -18,7 +31,7 @@ const AboutSection = () => {
               className="absolute inset-0 z-0"
           />
           <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
-          <div className="relative z-20 p-4 max-w-3xl mx-auto">
+          <div className="relative z-20  max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold mb-4">Temukan Keajaiban di Wonorejo Lawang</h2>
             <p className="text-lg">
               Desa Wonorejo Lawang, sebuah permata tersembunyi, menawarkan keindahan alam yang menakjubkan dan kekayaan budaya yang otentik.
@@ -27,33 +40,7 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Detailed About Content / Features Section */}
-        <div id="features" className="container mx-auto px-4 mt-16">
-          <SectionHeading Icon={Star} title={'Mengapa Memilih Kami?'} />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            <FeatureCard
-                icon="🌿"
-                title="Alam Memukau"
-                description="Dikelilingi oleh pemandangan pegunungan dan hijau yang asri."
-            />
-            <FeatureCard
-                icon="🏡"
-                title="Budaya Lokal"
-                description="Pengalaman otentik dengan keramahan penduduk setempat."
-            />
-            <FeatureCard
-                icon="🥑"
-                title="Produk Segar"
-                description="Menikmati hasil bumi langsung dari petani."
-            />
-            <FeatureCard
-                icon="🧘‍♀️"
-                title="Ketenangan"
-                description="Tempat sempurna untuk relaksasi dan melepas penat."
-            />
-          </div>
 
-        </div>
       </section>
   );
 };

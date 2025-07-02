@@ -19,12 +19,9 @@ const Footer = () => {
           <div className="col-span-1">
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="#home" className="hover:text-green-500 transition-colors">Home</Link></li>
-              <li><Link href="#about" className="hover:text-green-500 transition-colors">About Us</Link></li>
-              <li><Link href="#gallery" className="hover:text-green-500 transition-colors">Gallery</Link></li>
-              <li><Link href="#features" className="hover:text-green-500 transition-colors">Features</Link></li>
-              <li><Link href="#faq" className="hover:text-green-500 transition-colors">FAQ</Link></li>
-              <li><Link href="#contact" className="hover:text-green-500 transition-colors">Contact</Link></li>
+              <li><Link href="/" className="hover:text-accent transition-colors">Home</Link></li>
+              <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -32,8 +29,7 @@ const Footer = () => {
           <div className="col-span-1">
             <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
             <address className="not-italic space-y-2 text-sm">
-              <p>📧 info@wonorejolawang.com</p>
-              <p>📞 +62 812-3456-7890</p>
+              <p>📧 wonorejo.lawang@malangkab.go.id</p>
               <p>📍 Jl. Raya Wonorejo, Lawang, Malang, Jawa Timur</p>
             </address>
           </div>
@@ -43,9 +39,8 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white mb-4">Follow Us</h4>
             <div className="flex space-x-4">
               {/* Replace with actual social media icons/links */}
-              <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">Facebook</a>
-              <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">Instagram</a>
-              <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">Twitter</a>
+              <Link href="https://www.facebook.com/share/1FYegtzeqb/" className="text-gray-400 hover:text-accent transition-colors">Facebook</Link>
+              <Link href="https://www.instagram.com/desawonorejolawang" className="text-gray-400 hover:text-accent transition-colors">Instagram</Link>
             </div>
             {/* <h4 className="text-lg font-semibold text-white mt-6 mb-4">Newsletter</h4>
           <form className="flex">

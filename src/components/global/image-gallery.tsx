@@ -28,6 +28,7 @@ interface Gallery6Props {
 }
 
 const Gallery6 = ({
+    heading = 'Artikel Desa Wonorejo',
                     items = [
                       {
                         id: "item-1",
@@ -89,10 +90,10 @@ const Gallery6 = ({
     };
   }, [carouselApi]);
   return (
-      <section className="py-32">
+      <section className="py-8">
         <div className="container mx-auto">
           <div className="mb-8 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
-            <SectionHeading Icon={Star} title={'Galeri Kami'} />
+            <SectionHeading Icon={Star} title={heading} />
             <div className="mt-8 flex shrink-0 items-center justify-start gap-2">
               <Button
                   size="icon"

@@ -1,7 +1,8 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import {Instagram, Mail, MapPin, Phone} from "lucide-react";
+import SectionHeading from "@/components/global/section-heading";
+import Link from "next/link";
 
 interface ContactSectionProps {
-  title?: string;
   emailLabel?: string;
   emailDescription?: string;
   email?: string;
@@ -14,32 +15,26 @@ interface ContactSectionProps {
 }
 
 const ContactSection = ({
-                    title = "Contact Us",
                     emailLabel = "Email",
-                    emailDescription = "We respond to all emails within 24 hours.",
-                    email = "example@shadcnblocks.com",
+                    email = "wonorejo.lawang@malangkab.go.id",
                     officeLabel = "Office",
-                    officeDescription = "Drop by our office for a chat.",
-                    officeAddress = "1 Eagle St, Brisbane, QLD, 4000",
-                    phoneLabel = "Phone",
-                    phoneDescription = "We're available Mon-Fri, 9am-5pm.",
-                    phone = "+123 456 7890",
+                    phoneLabel = "Instagram",
+                    phone = "desawonorejolawang",
                   }: ContactSectionProps) => {
   return (
       <section className="bg-background py-32">
         <div className="container mx-auto">
-          <div className="mb-14">
-            <h1 className="mt-2 mb-3 text-3xl font-semibold text-balance md:text-4xl">
-              {title}
-            </h1>
-          </div>
+          <SectionHeading
+              Icon={Phone}
+              title={'Kontak Kami'}
+              className={'mb-12'}
+          />
           <div className="grid gap-10 md:grid-cols-3">
             <div>
             <span className="mb-3 flex size-12 flex-col items-center justify-center rounded-full bg-primary text-white">
               <Mail className="h-6 w-auto" />
             </span>
               <p className="mb-2 text-lg font-semibold">{emailLabel}</p>
-              <p className="mb-3 text-muted-foreground">{emailDescription}</p>
               <a
                   href={`mailto:${email}`}
                   className="font-semibold hover:underline"
@@ -52,25 +47,24 @@ const ContactSection = ({
               <MapPin className="h-6 w-auto" />
             </span>
               <p className="mb-2 text-lg font-semibold">{officeLabel}</p>
-              <p className="mb-3 text-muted-foreground">{officeDescription}</p>
-              <a href="#" className="font-semibold hover:underline">
-                {officeAddress}
-              </a>
+              <Link href="https://maps.app.goo.gl/MdJf84A6FjUTSt7e8" className="font-semibold hover:underline">
+                Jl. Raya Wonorejo No.4, Krajan Tengah, Wonorejo, Kec. Lawang, Kabupaten Malang, Jawa Timur 65251
+              </Link>
             </div>
             <div>
             <span className="mb-3 flex size-12 flex-col items-center justify-center rounded-full bg-primary text-white">
-              <Phone className="h-6 w-auto" />
+              <Instagram className="h-6 w-auto text-white" />
+
             </span>
               <p className="mb-2 text-lg font-semibold">{phoneLabel}</p>
-              <p className="mb-3 text-muted-foreground">{phoneDescription}</p>
-              <a href={`tel:${phone}`} className="font-semibold hover:underline">
-                {phone}
-              </a>
+              <Link href={`https://www.instagram.com/desawonorejolawang`}
+                 className="font-semibold hover:underline">
+                @{phone}
+              </Link>
             </div>
           </div>
         </div>
-      </section>
-  );
+      </section>);
 };
 
-export default ContactSection ;
+export default ContactSection;

@@ -1,6 +1,5 @@
 // components/HeroSection.tsx
 import Image from 'next/image';
-import { Button } from '@/components/ui/button'; // Using shadcn button
 
 const HeroSection = () => {
   return (
@@ -23,9 +22,6 @@ const HeroSection = () => {
           <p className="text-lg md:text-xl mb-8">
             Jelajahi keindahan alam dan budaya lokal yang memukau.
           </p>
-          <Button className="bg-primary text-white font-semibold py-3 px-8  shadow-lg transition-colors duration-300">
-            Jelajahi Sekarang
-          </Button>
         </div>
       </section>
   );
