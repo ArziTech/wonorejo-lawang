@@ -191,3 +191,15 @@
     letter-spacing: var(--tracking-normal);
   }
 }
+
+.list-upper-alpha {
+  list-style: none; /* Hilangkan default bullet/number */
+  counter-reset: upper-alpha-counter; /* Reset counter untuk setiap daftar baru */
+}
+
+.list-upper-alpha > li::before {
+  counter-increment: upper-alpha-counter; /* Naikkan counter */
+  content: counter(upper-alpha-counter, upper-alpha) ". "; /* Tampilkan A., B., C. */
+  font-weight: bold; /* Opsional: membuat huruf tebal */
+  margin-right: 0.5rem; /* Beri sedikit jarak */
+}

@@ -35,7 +35,7 @@ export default function RootLayout({
       <ThemeProvider attribute="class"
                      defaultTheme="light" // Set default theme to light
                      enableSystem disableTransitionOnChange>
-        <div className="relative h-full flex flex-col">
+        <div className="relative min-h-full flex flex-col">
           <Navbar1 logo={{title: "Wonorejo Lawang", url: '/'}}/>
           {children}
           <Footer />

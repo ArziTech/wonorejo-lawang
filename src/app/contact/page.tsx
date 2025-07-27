@@ -1,10 +1,17 @@
 import React from 'react'
 import ContactSection from "@/app/_components/contact-section";
-
+import Townhall from '../../../public/images/balai-desa.jpg'
+import Image from 'next/image'
 const Page = () => {
   return (
       <main className={'flex-grow'}>
         <ContactSection />
+
+        <section className="mb-32">
+          <div className="container mx-auto">
+            <Image src={Townhall} alt={'Balai Desa Wonrejo'} ></Image>
+          </div>
+        </section>
         {/*<section className="py-32">*/}
         {/*  <div className="container mx-auto">*/}
         {/*    <div*/}

@@ -47,8 +47,9 @@ const Navbar1 = ({
   },
   menu = [
     { title: "Home", url: "/" },
-    { title: "About", url: "/about" },
-    { title: "Contact", url: "/contact" },
+    { title: "Tentang", url: "/about" },
+    { title: "Wisata", url: "/destination" },
+    { title: "Kontak", url: "/contact" },
     // {
     //   title: "Products",
     //   url: "#",
