@@ -2,7 +2,7 @@
 import AboutIntroSection from './_components/about-intro-section';
 import HistorySection from './_components/history-section';
 import VisionMissionSection from './_components/vision-mission-section';
-import KeyFiguresSection from './_components/key-figures-section';
+// import KeyFiguresSection from './_components/key-figures-section';
 import MapSection from "@/app/about/_components/map-section";
 
 // Note: The Hero Section from the homepage is replaced by a simpler banner for subpages.

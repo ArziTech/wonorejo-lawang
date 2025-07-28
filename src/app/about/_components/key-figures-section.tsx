@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import SectionHeading from "@/components/global/section-heading";
 import { Users } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardTitle, CardDescription } from '@/components/ui/card';
 
 interface Figure {
   name: string;

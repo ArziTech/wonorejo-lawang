@@ -1,5 +1,4 @@
 // components/VisionMissionSection.tsx
-import Image from 'next/image';
 import SectionHeading from "@/components/global/section-heading";
 import { Target, Lightbulb } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
